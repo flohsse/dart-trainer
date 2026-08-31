@@ -74,7 +74,8 @@
       color: black;
       font-weight: bold;
     }
-    button.start {
+    button.start,
+    button.cameraButton {
       width: 100%;
       border: none;
       padding: 16px;
@@ -145,6 +146,41 @@
       font-size: 16px;
       padding: 0;
     }
+    .cameraWrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      background: black;
+      aspect-ratio: 4 / 3;
+      margin-bottom: 12px;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .cameraPlaceholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+    }
+    .cameraPlaceholder .icon {
+      font-size: 44px;
+      margin-bottom: 8px;
+    }
+    .status {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #aaa;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -168,15 +204,9 @@
 <div class="card">
   <label>Darts pro Runde</label>
   <div class="darts">
-    <button onclick="chooseDarts(3,this)" class="active">
-      3
-    </button>
-    <button onclick="chooseDarts(6,this)">
-      6
-    </button>
-    <button onclick="chooseDarts(9,this)">
-      9
-    </button>
+    <button onclick="chooseDarts(3,this)" class="active">3</button>
+    <button onclick="chooseDarts(6,this)">6</button>
+    <button onclick="chooseDarts(9,this)">9</button>
   </div>
 </div>
 <button class="start" onclick="startTraining()">
@@ -199,26 +229,37 @@
 <div class="stats">
   <div class="stat">
     <span>Würfe</span>
-    <strong id="throws">
-      0
-    </strong>
+    <strong id="throws">0</strong>
   </div>
   <div class="stat">
     <span>Treffer</span>
-    <strong id="hits">
-      0
-    </strong>
+    <strong id="hits">0</strong>
   </div>
   <div class="stat">
     <span>Quote</span>
-    <strong id="rate">
-      0 %
-    </strong>
+    <strong id="rate">0 %</strong>
   </div>
 </div>
 <div class="card round">
   <div id="roundCounter">
     0 / 3 Darts
+  </div>
+</div>
+<div class="card">
+  <label>Kamera</label>
+  <div class="cameraWrap">
+    <video id="video" autoplay playsinline muted></video>
+    <div id="cameraPlaceholder" class="cameraPlaceholder">
+      <div class="icon">📷</div>
+      <strong>Kamera noch aus</strong>
+      <div>Richte dein iPhone später auf das Dartboard.</div>
+    </div>
+  </div>
+  <button id="cameraButton" class="cameraButton" onclick="toggleCamera()">
+    Kamera starten
+  </button>
+  <div id="cameraStatus" class="status">
+    Noch keine Kamera aktiv
   </div>
 </div>
 <div class="card">
@@ -242,6 +283,7 @@ let totalThrows = 0
 let hits = 0
 let roundThrows = 0
 let round = 1
+let cameraStream = null
 const segment = document.getElementById("segment")
 for(let i=1;i<=20;i++){
   const option = document.createElement("option")
@@ -306,7 +348,64 @@ function update(){
       dartsPerRound+
       " Darts"
 }
+async function toggleCamera(){
+  const video =
+    document.getElementById("video")
+  const placeholder =
+    document.getElementById("cameraPlaceholder")
+  const button =
+    document.getElementById("cameraButton")
+  const status =
+    document.getElementById("cameraStatus")
+  if(cameraStream){
+    cameraStream
+      .getTracks()
+      .forEach(track=>track.stop())
+    cameraStream = null
+    video.srcObject = null
+    video.style.display = "none"
+    placeholder.style.display = "flex"
+    button.textContent = "Kamera starten"
+    status.textContent =
+      "Kamera gestoppt"
+    return
+  }
+  try{
+    cameraStream =
+      await navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: {
+            ideal: "environment"
+          }
+        },
+        audio: false
+      })
+    video.srcObject = cameraStream
+    video.style.display = "block"
+    placeholder.style.display = "none"
+    button.textContent = "Kamera stoppen"
+    status.textContent =
+      "Rückkamera aktiv"
+  }
+  catch(error){
+    console.error(error)
+    status.textContent =
+      "Kamera konnte nicht gestartet werden"
+    alert(
+      "Die Kamera konnte nicht geöffnet werden. Bitte erlaube Safari den Kamerazugriff."
+    )
+  }
+}
+function stopCamera(){
+  if(cameraStream){
+    cameraStream
+      .getTracks()
+      .forEach(track=>track.stop())
+    cameraStream = null
+  }
+}
 function back(){
+  stopCamera()
   document.getElementById("training")
     .style.display="none"
   document.getElementById("setup")
