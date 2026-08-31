@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="de">
-
 <head>
   <meta charset="utf-8">
 
@@ -10,16 +9,6 @@
   >
 
   <meta name="theme-color" content="#111111">
-
-  <meta
-    name="apple-mobile-web-app-capable"
-    content="yes"
-  >
-
-  <meta
-    name="apple-mobile-web-app-title"
-    content="Dart Trainer"
-  >
 
   <title>Dart Trainer</title>
 
@@ -32,11 +21,7 @@
       margin: 0;
       background: #0d0d0f;
       color: white;
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     button,
@@ -47,16 +32,13 @@
     .app {
       max-width: 650px;
       margin: auto;
-      padding:
-        max(20px, env(safe-area-inset-top))
-        16px
-        max(40px, env(safe-area-inset-bottom));
+      padding: 20px 16px 40px;
     }
 
     h1 {
       text-align: center;
       font-size: 34px;
-      margin: 5px 0;
+      margin-bottom: 5px;
     }
 
     .subtitle {
@@ -88,34 +70,29 @@
       border: 1px solid #333;
       background: #25252b;
       color: white;
-      font-size: 17px;
     }
 
-    button {
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: 0.4;
-    }
-
-    .mainButton {
+    .mainButton,
+    .secondary {
       width: 100%;
       border: 0;
       border-radius: 15px;
       padding: 15px;
       font-weight: 700;
+    }
+
+    .mainButton {
       background: white;
       color: black;
     }
 
     .secondary {
-      width: 100%;
-      border: 0;
-      border-radius: 15px;
-      padding: 14px;
       background: #303036;
       color: white;
+    }
+
+    button:disabled {
+      opacity: 0.35;
     }
 
     .buttonStack {
@@ -125,14 +102,14 @@
 
     .darts {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 8px;
     }
 
     .darts button {
+      padding: 14px;
       border: 0;
       border-radius: 12px;
-      padding: 14px;
       background: #29292f;
       color: white;
     }
@@ -148,15 +125,15 @@
     }
 
     .back {
-      border: 0;
-      background: transparent;
+      background: none;
+      border: none;
       color: #ccc;
-      padding: 4px 0 12px;
+      padding: 5px 0 12px;
     }
 
     .target {
       text-align: center;
-      margin: 8px 0 20px;
+      margin-bottom: 20px;
     }
 
     .target span {
@@ -166,12 +143,11 @@
     .target strong {
       display: block;
       font-size: 58px;
-      line-height: 1.1;
     }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 8px;
       margin-bottom: 16px;
     }
@@ -197,7 +173,6 @@
 
     .round {
       text-align: center;
-      font-weight: 600;
     }
 
     .cameraWrap {
@@ -206,7 +181,7 @@
       background: black;
       border-radius: 16px;
       overflow: hidden;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 4/3;
       margin-bottom: 12px;
     }
 
@@ -239,23 +214,22 @@
       position: absolute;
       inset: 0;
       display: flex;
-      align-items: center;
-      justify-content: center;
       flex-direction: column;
-      text-align: center;
+      justify-content: center;
+      align-items: center;
       color: #999;
+      text-align: center;
     }
 
     .cameraPlaceholder .icon {
       font-size: 45px;
-      margin-bottom: 8px;
     }
 
     .status {
       color: #aaa;
       text-align: center;
-      font-size: 13px;
       margin-top: 10px;
+      font-size: 13px;
     }
 
     .hint {
@@ -264,20 +238,12 @@
       line-height: 1.5;
     }
 
-    .steps {
-      margin-top: 14px;
-    }
-
     .step {
       display: flex;
-      align-items: center;
       gap: 12px;
-      padding: 10px 0;
+      align-items: center;
       border-bottom: 1px solid #29292f;
-    }
-
-    .step:last-child {
-      border-bottom: 0;
+      padding: 10px 0;
     }
 
     .stepNumber {
@@ -312,49 +278,17 @@
 
     .resultBox strong {
       display: block;
-      font-size: 27px;
-      margin-top: 6px;
+      font-size: 25px;
+      margin-top: 5px;
     }
 
     .detected {
       text-align: center;
     }
 
-    .detected .field {
-      font-size: 48px;
+    .detectedField {
+      font-size: 50px;
       font-weight: 800;
-      margin: 8px 0;
-    }
-
-    .good {
-      color: #fff;
-    }
-
-    .bad {
-      color: #bbb;
-    }
-
-    .manual {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .manual button {
-      border: 0;
-      border-radius: 15px;
-      padding: 16px;
-      font-weight: 700;
-    }
-
-    .manual .miss {
-      background: #303036;
-      color: white;
-    }
-
-    .manual .hit {
-      background: white;
-      color: black;
     }
   </style>
 </head>
@@ -368,13 +302,12 @@
     <h1>🎯 Dart Trainer</h1>
 
     <div class="subtitle">
-      Automatische Treffererkennung – Testversion
+      Dartspitzen-Erkennung V2
     </div>
 
     <div class="card">
 
       <label>Zielsegment</label>
-
       <select id="segment"></select>
 
       <label>Trefferbereich</label>
@@ -393,29 +326,9 @@
       <label>Darts pro Runde</label>
 
       <div class="darts">
-
-        <button
-          type="button"
-          data-darts="3"
-          class="active"
-        >
-          3
-        </button>
-
-        <button
-          type="button"
-          data-darts="6"
-        >
-          6
-        </button>
-
-        <button
-          type="button"
-          data-darts="9"
-        >
-          9
-        </button>
-
+        <button data-darts="3" class="active">3</button>
+        <button data-darts="6">6</button>
+        <button data-darts="9">9</button>
       </div>
 
     </div>
@@ -423,7 +336,6 @@
     <button
       id="startTrainingButton"
       class="mainButton"
-      type="button"
     >
       Training starten
     </button>
@@ -433,26 +345,14 @@
 
   <div id="training">
 
-    <button
-      id="backButton"
-      class="back"
-      type="button"
-    >
+    <button id="backButton" class="back">
       ← Zurück
     </button>
 
     <div class="target">
-
       <span>Ziel</span>
-
-      <strong id="target">
-        T20
-      </strong>
-
-      <div id="roundText">
-        Runde 1
-      </div>
-
+      <strong id="target">T20</strong>
+      <div id="roundText">Runde 1</div>
     </div>
 
     <div class="stats">
@@ -473,6 +373,7 @@
       </div>
 
     </div>
+
 
     <div class="card round">
       <div id="roundCounter">
@@ -505,26 +406,14 @@
           id="cameraPlaceholder"
           class="cameraPlaceholder"
         >
-
-          <div class="icon">
-            📷
-          </div>
-
-          <strong>
-            Kamera noch aus
-          </strong>
-
-          <span>
-            Das gesamte Board sollte sichtbar sein.
-          </span>
-
+          <div class="icon">📷</div>
+          <strong>Kamera noch aus</strong>
         </div>
 
       </div>
 
       <button
         id="cameraButton"
-        type="button"
         class="mainButton"
       >
         Kamera starten
@@ -542,14 +431,11 @@
 
     <div class="card">
 
-      <label>
-        1. Board kalibrieren
-      </label>
+      <label>1. Board kalibrieren</label>
 
       <p class="hint">
-        Wichtig: Wir verwenden jetzt die korrekte Board-Anordnung:
-        20 oben, 6 rechts, 3 unten und 11 links.
-        Markiere jeweils den äußeren Rand des Doppelrings.
+        Bull sowie Außenkante des Doppelrings bei 20 oben,
+        6 rechts, 3 unten und 11 links markieren.
       </p>
 
       <div
@@ -557,9 +443,7 @@
         class="resultBox"
       >
         Kalibrierung
-        <strong>
-          Noch nicht gestartet
-        </strong>
+        <strong>Noch nicht gestartet</strong>
       </div>
 
       <div class="buttonStack">
@@ -567,7 +451,6 @@
         <button
           id="startCalibrationButton"
           class="mainButton"
-          type="button"
         >
           Board kalibrieren
         </button>
@@ -575,119 +458,73 @@
         <button
           id="resetCalibrationButton"
           class="secondary"
-          type="button"
         >
           Kalibrierung löschen
         </button>
 
       </div>
 
-      <div class="steps">
 
-        <div
-          id="stepBull"
-          class="step"
-        >
-          <div class="stepNumber">
-            1
-          </div>
+      <div style="margin-top:15px">
 
+        <div id="stepBull" class="step">
+          <div class="stepNumber">1</div>
           <div class="stepText">
             Bull
-            <small>
-              Exakt die Boardmitte antippen
-            </small>
+            <small>Exakte Boardmitte</small>
           </div>
         </div>
 
-        <div
-          id="step20"
-          class="step"
-        >
-          <div class="stepNumber">
-            2
-          </div>
-
+        <div id="step20" class="step">
+          <div class="stepNumber">2</div>
           <div class="stepText">
             20 oben
-            <small>
-              Außenkante des Doppelrings bei 20
-            </small>
+            <small>Außenkante Doppelring</small>
           </div>
         </div>
 
-        <div
-          id="step6"
-          class="step"
-        >
-          <div class="stepNumber">
-            3
-          </div>
-
+        <div id="step6" class="step">
+          <div class="stepNumber">3</div>
           <div class="stepText">
             6 rechts
-            <small>
-              Außenkante des Doppelrings bei 6
-            </small>
+            <small>Außenkante Doppelring</small>
           </div>
         </div>
 
-        <div
-          id="step3"
-          class="step"
-        >
-          <div class="stepNumber">
-            4
-          </div>
-
+        <div id="step3" class="step">
+          <div class="stepNumber">4</div>
           <div class="stepText">
             3 unten
-            <small>
-              Außenkante des Doppelrings bei 3
-            </small>
+            <small>Außenkante Doppelring</small>
           </div>
         </div>
 
-        <div
-          id="step11"
-          class="step"
-        >
-          <div class="stepNumber">
-            5
-          </div>
-
+        <div id="step11" class="step">
+          <div class="stepNumber">5</div>
           <div class="stepText">
             11 links
-            <small>
-              Außenkante des Doppelrings bei 11
-            </small>
+            <small>Außenkante Doppelring</small>
           </div>
         </div>
 
       </div>
-
-      <p class="hint">
-        Nach der Kalibrierung darf das iPhone nicht mehr bewegt werden.
-      </p>
 
     </div>
 
 
     <div class="card">
 
-      <label>
-        2. Dart erkennen
-      </label>
+      <label>2. Dart erkennen</label>
 
       <p class="hint">
-        Zuerst Referenzbild aufnehmen. Danach genau einen Dart werfen und Vergleichsbild aufnehmen.
+        Referenzbild aufnehmen, einen Dart werfen und anschließend
+        „Dart erkennen“ drücken.
       </p>
 
       <div class="buttonStack">
 
         <button
           id="referenceButton"
-          type="button"
           class="mainButton"
         >
           Referenzbild aufnehmen
@@ -695,7 +532,6 @@
 
         <button
           id="compareButton"
-          type="button"
           class="secondary"
           disabled
         >
@@ -704,7 +540,6 @@
 
         <button
           id="toggleDifferenceButton"
-          type="button"
           class="secondary"
           disabled
         >
@@ -713,7 +548,6 @@
 
         <button
           id="correctButton"
-          type="button"
           class="secondary"
           disabled
         >
@@ -739,48 +573,16 @@
       style="display:none"
     >
 
-      <label>
-        Erkannter Wurf
-      </label>
+      <label>Erkannter Wurf</label>
 
       <div
         id="detectedField"
-        class="field"
+        class="detectedField"
       >
         -
       </div>
 
-      <div id="detectedMessage">
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <label>
-        Manueller Test
-      </label>
-
-      <div class="manual">
-
-        <button
-          id="manualMiss"
-          type="button"
-          class="miss"
-        >
-          Daneben
-        </button>
-
-        <button
-          id="manualHit"
-          type="button"
-          class="hit"
-        >
-          Treffer
-        </button>
-
-      </div>
+      <div id="detectedMessage"></div>
 
     </div>
 
@@ -796,13 +598,8 @@
 
 
 <script>
-
 "use strict";
 
-
-/* =========================
-   Trainingsdaten
-========================= */
 
 let dartsPerRound = 3;
 
@@ -811,17 +608,22 @@ let hits = 0;
 let roundThrows = 0;
 let round = 1;
 
-
-/* =========================
-   Kamera
-========================= */
-
 let cameraStream = null;
 
+let calibrationMode = false;
+let calibrationIndex = 0;
 
-/* =========================
-   Kalibrierung
-========================= */
+let calibrationPoints = [];
+
+let referenceImageData = null;
+let comparisonImageData = null;
+
+let detectedPoint = null;
+
+let correctionMode = false;
+
+let showingDifference = false;
+
 
 const calibrationNames = [
   "BULL",
@@ -831,62 +633,6 @@ const calibrationNames = [
   "11"
 ];
 
-let calibrationMode = false;
-let calibrationIndex = 0;
-let calibrationPoints = [];
-
-
-/* =========================
-   Bilder
-========================= */
-
-let referenceImageData = null;
-let comparisonImageData = null;
-
-let showingDifference = false;
-
-
-/* =========================
-   Trefferpunkt
-========================= */
-
-let detectedPoint = null;
-let correctionMode = false;
-
-
-/* =========================
-   DOM
-========================= */
-
-const video =
-  document.getElementById("video");
-
-const overlay =
-  document.getElementById("overlay");
-
-const differenceCanvas =
-  document.getElementById("differenceCanvas");
-
-const captureCanvas =
-  document.getElementById("captureCanvas");
-
-const cameraWrap =
-  document.getElementById("cameraWrap");
-
-const resultBox =
-  document.getElementById("differenceResult");
-
-const segmentSelect =
-  document.getElementById("segment");
-
-const areaSelect =
-  document.getElementById("area");
-
-
-/* =========================
-   Dartboard-Segmente
-   im Uhrzeigersinn ab 20
-========================= */
 
 const boardNumbers = [
   20,
@@ -912,9 +658,32 @@ const boardNumbers = [
 ];
 
 
-/* =========================
-   Segmentauswahl erzeugen
-========================= */
+const video =
+  document.getElementById("video");
+
+const overlay =
+  document.getElementById("overlay");
+
+const differenceCanvas =
+  document.getElementById("differenceCanvas");
+
+const captureCanvas =
+  document.getElementById("captureCanvas");
+
+const cameraWrap =
+  document.getElementById("cameraWrap");
+
+const segmentSelect =
+  document.getElementById("segment");
+
+const areaSelect =
+  document.getElementById("area");
+
+const resultBox =
+  document.getElementById("differenceResult");
+
+
+/* Segment-Auswahl */
 
 for(let i = 1; i <= 20; i++) {
 
@@ -933,9 +702,7 @@ for(let i = 1; i <= 20; i++) {
 }
 
 
-/* =========================
-   Darts pro Runde
-========================= */
+/* Darts pro Runde */
 
 document
   .querySelectorAll(".darts button")
@@ -950,8 +717,9 @@ document
 
         document
           .querySelectorAll(".darts button")
-          .forEach(b =>
-            b.classList.remove("active")
+          .forEach(
+            b =>
+              b.classList.remove("active")
           );
 
         button.classList.add("active");
@@ -962,9 +730,7 @@ document
   });
 
 
-/* =========================
-   Events
-========================= */
+/* Events */
 
 document
   .getElementById("startTrainingButton")
@@ -973,14 +739,12 @@ document
     startTraining
   );
 
-
 document
   .getElementById("backButton")
   .addEventListener(
     "click",
     back
   );
-
 
 document
   .getElementById("cameraButton")
@@ -989,14 +753,12 @@ document
     toggleCamera
   );
 
-
 document
   .getElementById("startCalibrationButton")
   .addEventListener(
     "click",
     startCalibration
   );
-
 
 document
   .getElementById("resetCalibrationButton")
@@ -1005,14 +767,12 @@ document
     resetCalibration
   );
 
-
 document
   .getElementById("referenceButton")
   .addEventListener(
     "click",
     captureReference
   );
-
 
 document
   .getElementById("compareButton")
@@ -1021,14 +781,12 @@ document
     captureComparison
   );
 
-
 document
   .getElementById("toggleDifferenceButton")
   .addEventListener(
     "click",
     toggleDifference
   );
-
 
 document
   .getElementById("correctButton")
@@ -1037,32 +795,13 @@ document
     enableCorrection
   );
 
-
-document
-  .getElementById("manualHit")
-  .addEventListener(
-    "click",
-    () => recordThrow(true)
-  );
-
-
-document
-  .getElementById("manualMiss")
-  .addEventListener(
-    "click",
-    () => recordThrow(false)
-  );
-
-
 overlay.addEventListener(
   "click",
   handleOverlayClick
 );
 
 
-/* =========================
-   Statusbox
-========================= */
+/* Status */
 
 function setResult(
   title,
@@ -1078,9 +817,7 @@ function setResult(
 }
 
 
-/* =========================
-   Training starten
-========================= */
+/* Training */
 
 function startTraining() {
 
@@ -1099,18 +836,14 @@ function startTraining() {
     .style.display =
       "block";
 
-  updateTargetName();
+  updateTarget();
 
   updateStats();
 
 }
 
 
-/* =========================
-   Zielname
-========================= */
-
-function updateTargetName() {
+function updateTarget() {
 
   const area =
     areaSelect.value;
@@ -1118,33 +851,19 @@ function updateTargetName() {
   const segment =
     segmentSelect.value;
 
-  let name = "";
-
-  if(area === "ANY") {
-    name = segment;
-  }
-  else {
-    name =
-      area +
-      segment;
-  }
-
   document
     .getElementById("target")
     .textContent =
-      name;
+      area === "ANY"
+      ? segment
+      : area + segment;
 
 }
 
 
-/* =========================
-   Statistik
-========================= */
-
 function recordThrow(hit) {
 
   totalThrows++;
-
   roundThrows++;
 
   if(hit) {
@@ -1157,7 +876,6 @@ function recordThrow(hit) {
   ) {
 
     round++;
-
     roundThrows = 0;
 
   }
@@ -1215,16 +933,13 @@ function updateStats() {
 }
 
 
-/* =========================
-   Kamera
-========================= */
+/* Kamera */
 
 async function toggleCamera() {
 
   if(cameraStream) {
 
     stopCamera();
-
     return;
 
   }
@@ -1232,8 +947,7 @@ async function toggleCamera() {
   try {
 
     cameraStream =
-      await navigator
-        .mediaDevices
+      await navigator.mediaDevices
         .getUserMedia({
 
           video: {
@@ -1260,13 +974,10 @@ async function toggleCamera() {
     video.srcObject =
       cameraStream;
 
-
     await video.play();
-
 
     video.style.display =
       "block";
-
 
     document
       .getElementById(
@@ -1275,14 +986,12 @@ async function toggleCamera() {
       .style.display =
         "none";
 
-
     document
       .getElementById(
         "cameraButton"
       )
       .textContent =
         "Kamera stoppen";
-
 
     document
       .getElementById(
@@ -1291,31 +1000,21 @@ async function toggleCamera() {
       .textContent =
         "Rückkamera aktiv";
 
-
     cameraWrap.style.aspectRatio =
       video.videoWidth +
-      " / " +
+      "/" +
       video.videoHeight;
-
 
     resizeOverlay();
 
     drawOverlay();
 
-
-    setResult(
-      "Kamera",
-      "Livebild aktiv"
-    );
-
   }
   catch(error) {
 
-    console.error(error);
-
     setResult(
       "Fehler",
-      "Kamera konnte nicht geöffnet werden"
+      "Kamera konnte nicht gestartet werden"
     );
 
   }
@@ -1338,24 +1037,14 @@ function stopCamera() {
 
   cameraStream = null;
 
-  video.srcObject = null;
+  video.srcObject =
+    null;
 
   video.style.display =
     "none";
 
-  document
-    .getElementById(
-      "cameraPlaceholder"
-    )
-    .style.display =
-      "flex";
-
 }
 
-
-/* =========================
-   Overlaygröße
-========================= */
 
 function resizeOverlay() {
 
@@ -1388,9 +1077,7 @@ window.addEventListener(
 );
 
 
-/* =========================
-   Kalibrierung
-========================= */
+/* Kalibrierung */
 
 function startCalibration() {
 
@@ -1415,14 +1102,34 @@ function startCalibration() {
 
   resetSteps();
 
-  updateCalibrationText();
+  updateCalibrationMessage();
 
   drawOverlay();
 
 }
 
 
-function updateCalibrationText() {
+function updateCalibrationMessage() {
+
+  const names = {
+
+    BULL:
+      "Bull / Boardmitte",
+
+    "20":
+      "Doppelring 20 oben",
+
+    "6":
+      "Doppelring 6 rechts",
+
+    "3":
+      "Doppelring 3 unten",
+
+    "11":
+      "Doppelring 11 links"
+
+  };
+
 
   if(
     calibrationIndex >=
@@ -1440,56 +1147,24 @@ function updateCalibrationText() {
 
   }
 
-  let text = "";
 
-  switch(
+  const name =
     calibrationNames[
       calibrationIndex
-    ]
-  ) {
+    ];
 
-    case "BULL":
-      text =
-        "Jetzt Bull / Boardmitte antippen";
-      break;
-
-    case "20":
-      text =
-        "Jetzt Doppelring bei 20 oben antippen";
-      break;
-
-    case "6":
-      text =
-        "Jetzt Doppelring bei 6 rechts antippen";
-      break;
-
-    case "3":
-      text =
-        "Jetzt Doppelring bei 3 unten antippen";
-      break;
-
-    case "11":
-      text =
-        "Jetzt Doppelring bei 11 links antippen";
-      break;
-
-  }
 
   document
     .getElementById(
       "calibrationMessage"
     )
     .innerHTML =
-      "Kalibrierung<strong>" +
-      text +
+      "Jetzt antippen<strong>" +
+      names[name] +
       "</strong>";
 
 }
 
-
-/* =========================
-   Overlay Klick
-========================= */
 
 function handleOverlayClick(event) {
 
@@ -1528,7 +1203,7 @@ function handleOverlayClick(event) {
       y
     };
 
-    evaluateDetectedPoint(
+    evaluatePoint(
       detectedPoint,
       true
     );
@@ -1539,10 +1214,6 @@ function handleOverlayClick(event) {
 
 }
 
-
-/* =========================
-   Kalibrierpunkt speichern
-========================= */
 
 function saveCalibrationPoint(
   x,
@@ -1566,7 +1237,6 @@ function saveCalibrationPoint(
 
   markStep(name);
 
-
   calibrationIndex++;
 
 
@@ -1580,31 +1250,21 @@ function saveCalibrationPoint(
 
 
     localStorage.setItem(
-      "dartCalibrationV2",
+      "dartCalibrationV3",
       JSON.stringify(
         calibrationPoints
       )
     );
 
-
-    setResult(
-      "Kalibrierung",
-      "Gespeichert ✓"
-    );
-
   }
 
 
-  updateCalibrationText();
+  updateCalibrationMessage();
 
   drawOverlay();
 
 }
 
-
-/* =========================
-   Schritte markieren
-========================= */
 
 function markStep(name) {
 
@@ -1661,10 +1321,6 @@ function resetSteps() {
 }
 
 
-/* =========================
-   Kalibrierung löschen
-========================= */
-
 function resetCalibration() {
 
   calibrationMode = false;
@@ -1673,10 +1329,8 @@ function resetCalibration() {
 
   calibrationPoints = [];
 
-  detectedPoint = null;
-
   localStorage.removeItem(
-    "dartCalibrationV2"
+    "dartCalibrationV3"
   );
 
   resetSteps();
@@ -1691,9 +1345,7 @@ function resetCalibration() {
 }
 
 
-/* =========================
-   Overlay zeichnen
-========================= */
+/* Overlay */
 
 function drawOverlay() {
 
@@ -1743,78 +1395,14 @@ function drawOverlay() {
     });
 
 
-  if(
-    calibrationPoints.length === 5
-  ) {
-
-    const bull =
-      calibrationPoints[0];
-
-    const top =
-      calibrationPoints[1];
-
-    const right =
-      calibrationPoints[2];
-
-    const bottom =
-      calibrationPoints[3];
-
-    const left =
-      calibrationPoints[4];
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-      top.x,
-      top.y
-    );
-
-    ctx.lineTo(
-      right.x,
-      right.y
-    );
-
-    ctx.lineTo(
-      bottom.x,
-      bottom.y
-    );
-
-    ctx.lineTo(
-      left.x,
-      left.y
-    );
-
-    ctx.closePath();
+  if(detectedPoint) {
 
     ctx.strokeStyle =
-      "rgba(255,255,255,0.7)";
+      "yellow";
 
     ctx.lineWidth =
-      2;
+      4;
 
-    ctx.stroke();
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-      bull.x,
-      bull.y,
-      6,
-      0,
-      Math.PI * 2
-    );
-
-    ctx.fillStyle =
-      "white";
-
-    ctx.fill();
-
-  }
-
-
-  if(detectedPoint) {
 
     ctx.beginPath();
 
@@ -1825,12 +1413,6 @@ function drawOverlay() {
       0,
       Math.PI * 2
     );
-
-    ctx.strokeStyle =
-      "yellow";
-
-    ctx.lineWidth =
-      4;
 
     ctx.stroke();
 
@@ -1864,9 +1446,7 @@ function drawOverlay() {
 }
 
 
-/* =========================
-   Bild aufnehmen
-========================= */
+/* Bildaufnahme */
 
 function captureFrame() {
 
@@ -1936,9 +1516,7 @@ function captureFrame() {
 }
 
 
-/* =========================
-   Referenzbild
-========================= */
+/* Referenz */
 
 function captureReference() {
 
@@ -1975,11 +1553,6 @@ function captureReference() {
 
   if(!referenceImageData) {
 
-    setResult(
-      "Fehler",
-      "Referenzbild nicht möglich"
-    );
-
     return;
 
   }
@@ -2001,41 +1574,25 @@ function captureReference() {
 
 
   setResult(
-    "Referenzbild gespeichert",
-    "Jetzt genau einen Dart werfen"
+    "Referenz gespeichert",
+    "Jetzt Dart werfen"
   );
 
 }
 
 
-/* =========================
-   Vergleichsbild
-========================= */
+/* Vergleich */
 
 function captureComparison() {
-
-  if(!referenceImageData) {
-
-    setResult(
-      "Fehler",
-      "Referenzbild fehlt"
-    );
-
-    return;
-
-  }
-
 
   comparisonImageData =
     captureFrame();
 
 
-  if(!comparisonImageData) {
-
-    setResult(
-      "Fehler",
-      "Vergleichsbild nicht möglich"
-    );
+  if(
+    !referenceImageData ||
+    !comparisonImageData
+  ) {
 
     return;
 
@@ -2047,9 +1604,9 @@ function captureComparison() {
 }
 
 
-/* =========================
-   Bildunterschied analysieren
-========================= */
+/* ======================================================
+   VERBESSERTE DARTERKENNUNG
+====================================================== */
 
 function analyzeDifference() {
 
@@ -2060,64 +1617,54 @@ function analyzeDifference() {
     comparisonImageData;
 
 
-  if(
-    a.width !== b.width ||
-    a.height !== b.height
-  ) {
+  const width =
+    a.width;
 
-    setResult(
-      "Fehler",
-      "Bildgröße geändert"
-    );
+  const height =
+    a.height;
+
+
+  if(
+    width !== b.width ||
+    height !== b.height
+  ) {
 
     return;
 
   }
 
 
-  differenceCanvas.width =
-    a.width;
-
-  differenceCanvas.height =
-    a.height;
-
-
-  const ctx =
-    differenceCanvas
-      .getContext("2d");
-
-
-  const output =
-    ctx.createImageData(
-      a.width,
-      a.height
+  const mask =
+    new Uint8Array(
+      width *
+      height
     );
 
 
-  let changedPixels =
-    [];
-
-
   const threshold =
-    50;
+    48;
 
+
+  /*
+    Pixeländerungen bestimmen
+  */
 
   for(
-    let y = 0;
-    y < a.height;
+    let y = 1;
+    y < height - 1;
     y++
   ) {
 
     for(
-      let x = 0;
-      x < a.width;
+      let x = 1;
+      x < width - 1;
       x++
     ) {
 
       const i =
         (
           y *
-          a.width +
+          width +
           x
         ) *
         4;
@@ -2144,7 +1691,7 @@ function analyzeDifference() {
         );
 
 
-      const diff =
+      const difference =
         (
           dr +
           dg +
@@ -2153,25 +1700,17 @@ function analyzeDifference() {
         3;
 
 
-      if(diff > threshold) {
+      if(
+        difference >
+        threshold
+      ) {
 
-        output.data[i] =
-          255;
-
-        output.data[i + 1] =
-          255;
-
-        output.data[i + 2] =
-          255;
-
-        output.data[i + 3] =
-          220;
-
-
-        changedPixels.push({
-          x,
-          y
-        });
+        mask[
+          y *
+          width +
+          x
+        ] =
+          1;
 
       }
 
@@ -2180,21 +1719,25 @@ function analyzeDifference() {
   }
 
 
-  ctx.putImageData(
-    output,
-    0,
-    0
-  );
+  /*
+    Zusammenhängende Bereiche suchen
+  */
+
+  const components =
+    findComponents(
+      mask,
+      width,
+      height
+    );
 
 
   if(
-    changedPixels.length <
-    30
+    components.length === 0
   ) {
 
     setResult(
       "Keine Erkennung",
-      "Zu wenig Bildänderung"
+      "Keine deutliche Veränderung"
     );
 
     return;
@@ -2202,19 +1745,73 @@ function analyzeDifference() {
   }
 
 
-  const point =
-    estimateImpactPoint(
-      changedPixels,
-      a.width,
-      a.height
-    );
+  /*
+    Bereiche bewerten.
+    Wir bevorzugen:
+    - genügend Pixel
+    - längliche Form
+    - Nähe zum Dartboard
+  */
+
+  const candidates =
+    components
+      .filter(
+        c =>
+          c.pixels.length >
+          40
+      )
+      .map(
+        c =>
+          analyzeComponent(
+            c,
+            width,
+            height
+          )
+      )
+      .filter(
+        c =>
+          c !== null
+      );
 
 
-  if(!point) {
+  if(
+    candidates.length === 0
+  ) {
 
     setResult(
       "Keine Erkennung",
-      "Kein Punkt im Board gefunden"
+      "Kein Dart-Kandidat gefunden"
+    );
+
+    return;
+
+  }
+
+
+  candidates.sort(
+    (a,b) =>
+      b.score -
+      a.score
+  );
+
+
+  const best =
+    candidates[0];
+
+
+  const tipImage =
+    determineTip(
+      best,
+      width,
+      height
+    );
+
+
+  if(!tipImage) {
+
+    setResult(
+      "Keine Erkennung",
+      "Dartspitze nicht gefunden"
     );
 
     return;
@@ -2224,28 +1821,27 @@ function analyzeDifference() {
 
   detectedPoint =
     imagePointToOverlay(
-      point.x,
-      point.y,
-      a.width,
-      a.height
+      tipImage.x,
+      tipImage.y,
+      width,
+      height
     );
 
 
-  evaluateDetectedPoint(
+  evaluatePoint(
     detectedPoint,
     false
   );
 
 
+  drawDifference(
+    mask,
+    width,
+    height
+  );
+
+
   drawOverlay();
-
-
-  differenceCanvas.style.display =
-    "block";
-
-
-  showingDifference =
-    true;
 
 
   document
@@ -2263,74 +1859,312 @@ function analyzeDifference() {
     .disabled =
       false;
 
+}
 
-  document
-    .getElementById(
-      "toggleDifferenceButton"
-    )
-    .textContent =
-      "Livebild anzeigen";
+
+/* Komponenten suchen */
+
+function findComponents(
+  mask,
+  width,
+  height
+) {
+
+  const visited =
+    new Uint8Array(
+      mask.length
+    );
+
+
+  const components =
+    [];
+
+
+  const directions = [
+    [-1,-1],
+    [0,-1],
+    [1,-1],
+    [-1,0],
+    [1,0],
+    [-1,1],
+    [0,1],
+    [1,1]
+  ];
+
+
+  for(
+    let y = 0;
+    y < height;
+    y++
+  ) {
+
+    for(
+      let x = 0;
+      x < width;
+      x++
+    ) {
+
+      const start =
+        y *
+        width +
+        x;
+
+
+      if(
+        !mask[start] ||
+        visited[start]
+      ) {
+
+        continue;
+
+      }
+
+
+      const queue =
+        [
+          {
+            x,
+            y
+          }
+        ];
+
+
+      visited[start] =
+        1;
+
+
+      const pixels =
+        [];
+
+
+      while(
+        queue.length
+      ) {
+
+        const p =
+          queue.pop();
+
+
+        pixels.push(p);
+
+
+        for(
+          const [
+            dx,
+            dy
+          ]
+          of directions
+        ) {
+
+          const nx =
+            p.x +
+            dx;
+
+
+          const ny =
+            p.y +
+            dy;
+
+
+          if(
+            nx < 0 ||
+            ny < 0 ||
+            nx >= width ||
+            ny >= height
+          ) {
+
+            continue;
+
+          }
+
+
+          const index =
+            ny *
+            width +
+            nx;
+
+
+          if(
+            mask[index] &&
+            !visited[index]
+          ) {
+
+            visited[index] =
+              1;
+
+
+            queue.push({
+
+              x:
+                nx,
+
+              y:
+                ny
+
+            });
+
+          }
+
+        }
+
+      }
+
+
+      components.push({
+        pixels
+      });
+
+    }
+
+  }
+
+
+  return components;
 
 }
 
 
-/* =========================
-   Trefferpunkt aus Änderung
-   schätzen
-========================= */
+/* PCA / Hauptachse */
 
-function estimateImpactPoint(
-  pixels,
-  imageWidth,
-  imageHeight
+function analyzeComponent(
+  component,
+  width,
+  height
 ) {
 
-  const inside =
-    [];
+  const pixels =
+    component.pixels;
 
 
-  pixels.forEach(
-    p => {
+  let meanX =
+    0;
 
-      const overlayPoint =
-        imagePointToOverlay(
-          p.x,
-          p.y,
-          imageWidth,
-          imageHeight
-        );
+  let meanY =
+    0;
 
 
-      const board =
-        toBoardCoordinates(
-          overlayPoint.x,
-          overlayPoint.y
-        );
+  for(
+    const p of pixels
+  ) {
+
+    meanX +=
+      p.x;
+
+    meanY +=
+      p.y;
+
+  }
 
 
-      if(
-        board &&
-        board.radius <=
-        1.05
-      ) {
+  meanX /=
+    pixels.length;
 
-        inside.push({
-          image:
-            p,
+  meanY /=
+    pixels.length;
 
-          board:
-            board
-        });
 
-      }
+  let xx = 0;
+  let yy = 0;
+  let xy = 0;
 
-    }
-  );
 
+  for(
+    const p of pixels
+  ) {
+
+    const dx =
+      p.x -
+      meanX;
+
+
+    const dy =
+      p.y -
+      meanY;
+
+
+    xx +=
+      dx *
+      dx;
+
+
+    yy +=
+      dy *
+      dy;
+
+
+    xy +=
+      dx *
+      dy;
+
+  }
+
+
+  xx /=
+    pixels.length;
+
+  yy /=
+    pixels.length;
+
+  xy /=
+    pixels.length;
+
+
+  const trace =
+    xx +
+    yy;
+
+
+  const det =
+    xx *
+    yy -
+    xy *
+    xy;
+
+
+  const root =
+    Math.sqrt(
+      Math.max(
+        0,
+        trace *
+        trace /
+        4 -
+        det
+      )
+    );
+
+
+  const lambda1 =
+    trace /
+    2 +
+    root;
+
+
+  const lambda2 =
+    trace /
+    2 -
+    root;
+
+
+  /*
+    Länglichkeit
+  */
+
+  const elongation =
+    lambda1 /
+    Math.max(
+      lambda2,
+      0.1
+    );
+
+
+  /*
+    Sehr kompakte Bereiche
+    sind wahrscheinlich Lichtänderungen.
+  */
 
   if(
-    inside.length <
-    10
+    elongation <
+    1.6
   ) {
 
     return null;
@@ -2338,47 +2172,316 @@ function estimateImpactPoint(
   }
 
 
-  /*
-    Erste einfache Heuristik:
-    Schwerpunkt der veränderten Pixel,
-    die innerhalb des Boards liegen.
-  */
-
-  let sx = 0;
-  let sy = 0;
+  let vx;
+  let vy;
 
 
-  inside.forEach(
-    item => {
+  if(
+    Math.abs(xy) >
+    0.001
+  ) {
 
-      sx +=
-        item.image.x;
+    vx =
+      lambda1 -
+      yy;
 
-      sy +=
-        item.image.y;
+    vy =
+      xy;
+
+  }
+  else {
+
+    if(xx >= yy) {
+
+      vx = 1;
+      vy = 0;
 
     }
-  );
+    else {
+
+      vx = 0;
+      vy = 1;
+
+    }
+
+  }
+
+
+  const length =
+    Math.sqrt(
+      vx *
+      vx +
+      vy *
+      vy
+    );
+
+
+  vx /=
+    length;
+
+  vy /=
+    length;
+
+
+  let minProjection =
+    Infinity;
+
+  let maxProjection =
+    -Infinity;
+
+
+  let minPoint =
+    null;
+
+  let maxPoint =
+    null;
+
+
+  for(
+    const p of pixels
+  ) {
+
+    const projection =
+      (
+        p.x -
+        meanX
+      ) *
+      vx +
+      (
+        p.y -
+        meanY
+      ) *
+      vy;
+
+
+    if(
+      projection <
+      minProjection
+    ) {
+
+      minProjection =
+        projection;
+
+      minPoint =
+        p;
+
+    }
+
+
+    if(
+      projection >
+      maxProjection
+    ) {
+
+      maxProjection =
+        projection;
+
+      maxPoint =
+        p;
+
+    }
+
+  }
+
+
+  const axisLength =
+    maxProjection -
+    minProjection;
+
+
+  const score =
+    Math.log(
+      pixels.length +
+      1
+    ) *
+    elongation *
+    Math.max(
+      axisLength,
+      1
+    );
 
 
   return {
 
-    x:
-      sx /
-      inside.length,
+    pixels,
 
-    y:
-      sy /
-      inside.length
+    meanX,
+
+    meanY,
+
+    vx,
+
+    vy,
+
+    minPoint,
+
+    maxPoint,
+
+    elongation,
+
+    axisLength,
+
+    score
 
   };
 
 }
 
 
-/* =========================
-   Bildkoordinaten -> Overlay
-========================= */
+/* Dartspitze bestimmen */
+
+function determineTip(
+  component,
+  imageWidth,
+  imageHeight
+) {
+
+  const p1 =
+    imagePointToOverlay(
+      component.minPoint.x,
+      component.minPoint.y,
+      imageWidth,
+      imageHeight
+    );
+
+
+  const p2 =
+    imagePointToOverlay(
+      component.maxPoint.x,
+      component.maxPoint.y,
+      imageWidth,
+      imageHeight
+    );
+
+
+  const bull =
+    calibrationPoints[0];
+
+
+  const d1 =
+    distance(
+      p1,
+      bull
+    );
+
+
+  const d2 =
+    distance(
+      p2,
+      bull
+    );
+
+
+  /*
+    Für eine Kamera, die ungefähr
+    auf das Board gerichtet ist,
+    liegt die Spitze meistens näher
+    an der Boardmitte als Schaft/Flight.
+
+    Diese Heuristik ersetzen wir später
+    ggf. durch eine noch bessere
+    Spitzenklassifikation.
+  */
+
+  return (
+    d1 <= d2
+    ? component.minPoint
+    : component.maxPoint
+  );
+
+}
+
+
+function distance(
+  a,
+  b
+) {
+
+  const dx =
+    a.x -
+    b.x;
+
+  const dy =
+    a.y -
+    b.y;
+
+  return Math.sqrt(
+    dx *
+    dx +
+    dy *
+    dy
+  );
+
+}
+
+
+/* Differenzbild */
+
+function drawDifference(
+  mask,
+  width,
+  height
+) {
+
+  differenceCanvas.width =
+    width;
+
+  differenceCanvas.height =
+    height;
+
+
+  const ctx =
+    differenceCanvas
+      .getContext("2d");
+
+
+  const image =
+    ctx.createImageData(
+      width,
+      height
+    );
+
+
+  for(
+    let i = 0;
+    i < mask.length;
+    i++
+  ) {
+
+    const j =
+      i *
+      4;
+
+
+    if(mask[i]) {
+
+      image.data[j] =
+        255;
+
+      image.data[j + 1] =
+        255;
+
+      image.data[j + 2] =
+        255;
+
+      image.data[j + 3] =
+        220;
+
+    }
+
+  }
+
+
+  ctx.putImageData(
+    image,
+    0,
+    0
+  );
+
+}
+
+
+/* Bild -> Overlay */
 
 function imagePointToOverlay(
   x,
@@ -2404,9 +2507,7 @@ function imagePointToOverlay(
 }
 
 
-/* =========================
-   Board-Koordinaten
-========================= */
+/* Boardkoordinaten */
 
 function toBoardCoordinates(
   x,
@@ -2467,16 +2568,6 @@ function toBoardCoordinates(
     2;
 
 
-  if(
-    rx <= 0 ||
-    ry <= 0
-  ) {
-
-    return null;
-
-  }
-
-
   const nx =
     (
       x -
@@ -2495,15 +2586,12 @@ function toBoardCoordinates(
 
   const radius =
     Math.sqrt(
-      nx * nx +
-      ny * ny
+      nx *
+      nx +
+      ny *
+      ny
     );
 
-
-  /*
-    0° = oben
-    Winkel steigt im Uhrzeigersinn
-  */
 
   let angle =
     Math.atan2(
@@ -2524,12 +2612,6 @@ function toBoardCoordinates(
 
   return {
 
-    x:
-      nx,
-
-    y:
-      ny,
-
     radius,
     angle
 
@@ -2538,9 +2620,7 @@ function toBoardCoordinates(
 }
 
 
-/* =========================
-   Feld bestimmen
-========================= */
+/* Dartfeld */
 
 function getDartField(
   point
@@ -2562,24 +2642,6 @@ function getDartField(
 
   const r =
     board.radius;
-
-
-  /*
-    Standard-Radien relativ
-    zum Außenrand Double = 170 mm
-
-    Inner Bull:
-    6,35 / 170
-
-    Outer Bull:
-    15,9 / 170
-
-    Triple:
-    99 - 107 mm
-
-    Double:
-    162 - 170 mm
-  */
 
 
   const innerBull =
@@ -2607,10 +2669,6 @@ function getDartField(
     170;
 
 
-  const doubleOuter =
-    1;
-
-
   if(
     r <=
     innerBull
@@ -2621,11 +2679,11 @@ function getDartField(
       name:
         "DB",
 
-      segment:
-        25,
-
       area:
         "DB",
+
+      segment:
+        25,
 
       score:
         50
@@ -2645,11 +2703,11 @@ function getDartField(
       name:
         "SB",
 
-      segment:
-        25,
-
       area:
         "SB",
+
+      segment:
+        25,
 
       score:
         25
@@ -2661,7 +2719,7 @@ function getDartField(
 
   if(
     r >
-    doubleOuter
+    1
   ) {
 
     return {
@@ -2669,11 +2727,11 @@ function getDartField(
       name:
         "MISS",
 
-      segment:
-        null,
-
       area:
         "MISS",
+
+      segment:
+        null,
 
       score:
         0
@@ -2682,13 +2740,6 @@ function getDartField(
 
   }
 
-
-  /*
-    Jedes Segment = 18°
-
-    Mittelpunkt 20 bei 0°.
-    Deshalb +9° vor Division.
-  */
 
   const index =
     Math.floor(
@@ -2723,8 +2774,7 @@ function getDartField(
 
 
   if(
-    r >= doubleInner &&
-    r <= doubleOuter
+    r >= doubleInner
   ) {
 
     area =
@@ -2761,25 +2811,21 @@ function getDartField(
       area +
       number,
 
+    area,
+
     segment:
       number,
 
-    area:
-      area,
-
-    score:
-      score
+    score
 
   };
 
 }
 
 
-/* =========================
-   Ergebnis auswerten
-========================= */
+/* Ergebnis */
 
-function evaluateDetectedPoint(
+function evaluatePoint(
   point,
   corrected
 ) {
@@ -2791,11 +2837,6 @@ function evaluateDetectedPoint(
 
 
   if(!field) {
-
-    setResult(
-      "Fehler",
-      "Feld konnte nicht berechnet werden"
-    );
 
     return;
 
@@ -2857,34 +2898,14 @@ function evaluateDetectedPoint(
       field.name;
 
 
-  const message =
-    document
-      .getElementById(
-        "detectedMessage"
-      );
-
-
-  if(hit) {
-
-    message.textContent =
+  document
+    .getElementById(
+      "detectedMessage"
+    )
+    .textContent =
       corrected
-        ? "Treffer ✓ – manuell korrigierter Punkt"
-        : "Treffer ✓ – automatisch erkannt";
-
-  }
-  else {
-
-    message.textContent =
-      corrected
-        ? "Ziel verfehlt – manuell korrigierter Punkt"
-        : "Ziel verfehlt – automatisch erkannt";
-
-  }
-
-
-  recordThrow(
-    hit
-  );
+      ? "Manuell korrigierter Trefferpunkt"
+      : "Automatisch erkannter Trefferpunkt";
 
 
   setResult(
@@ -2895,38 +2916,37 @@ function evaluateDetectedPoint(
     " Punkte"
   );
 
+
+  if(!corrected) {
+
+    recordThrow(
+      hit
+    );
+
+  }
+
 }
 
 
-/* =========================
-   Trefferpunkt korrigieren
-========================= */
+/* Korrektur */
 
 function enableCorrection() {
 
   correctionMode =
     true;
 
-
   differenceCanvas.style.display =
     "none";
 
-
-  showingDifference =
-    false;
-
-
   setResult(
     "Korrektur",
-    "Jetzt Dartspitze im Kamerabild antippen"
+    "Jetzt Dartspitze exakt antippen"
   );
 
 }
 
 
-/* =========================
-   Unterschied anzeigen
-========================= */
+/* Unterschied */
 
 function toggleDifference() {
 
@@ -2934,47 +2954,31 @@ function toggleDifference() {
     !showingDifference;
 
 
-  if(showingDifference) {
-
-    differenceCanvas.style.display =
-      "block";
-
-
-    document
-      .getElementById(
-        "toggleDifferenceButton"
-      )
-      .textContent =
-        "Livebild anzeigen";
-
-  }
-  else {
-
-    differenceCanvas.style.display =
-      "none";
+  differenceCanvas.style.display =
+    showingDifference
+    ? "block"
+    : "none";
 
 
-    document
-      .getElementById(
-        "toggleDifferenceButton"
-      )
-      .textContent =
-        "Unterschied anzeigen";
-
-  }
+  document
+    .getElementById(
+      "toggleDifferenceButton"
+    )
+    .textContent =
+      showingDifference
+      ? "Livebild anzeigen"
+      : "Unterschied anzeigen";
 
 }
 
 
-/* =========================
-   Kalibrierung laden
-========================= */
+/* Kalibrierung laden */
 
 function loadCalibration() {
 
   const saved =
     localStorage.getItem(
-      "dartCalibrationV2"
+      "dartCalibrationV3"
     );
 
 
@@ -3004,9 +3008,9 @@ function loadCalibration() {
 
 
       parsed.forEach(
-        point =>
+        p =>
           markStep(
-            point.name
+            p.name
           )
       );
 
@@ -3016,7 +3020,7 @@ function loadCalibration() {
           "calibrationMessage"
         )
         .innerHTML =
-          "Kalibrierung<strong>Gespeicherte Kalibrierung geladen ✓</strong>";
+          "Kalibrierung<strong>Gespeichert ✓</strong>";
 
     }
 
@@ -3030,9 +3034,7 @@ function loadCalibration() {
 }
 
 
-/* =========================
-   Zurück
-========================= */
+/* Zurück */
 
 function back() {
 
@@ -3045,7 +3047,6 @@ function back() {
     .style.display =
       "none";
 
-
   document
     .getElementById(
       "setup"
@@ -3055,10 +3056,6 @@ function back() {
 
 }
 
-
-/* =========================
-   Start
-========================= */
 
 loadCalibration();
 
