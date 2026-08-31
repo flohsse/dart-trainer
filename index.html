@@ -25,11 +25,7 @@ content=“Dart Trainer”
     }
     body {
       margin: 0;
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #0d0d0f;
       color: white;
     }
@@ -57,9 +53,7 @@ content=“Dart Trainer”
     }
     .card {
       background: #18181c;
-      border:
-        1px solid
-        #2b2b31;
+      border: 1px solid #2b2b31;
       border-radius: 18px;
       padding: 16px;
       margin-bottom: 16px;
@@ -74,9 +68,7 @@ content=“Dart Trainer”
       width: 100%;
       padding: 14px;
       border-radius: 12px;
-      border:
-        1px solid
-        #333;
+      border: 1px solid #333;
       background: #25252b;
       color: white;
       font-size: 17px;
@@ -84,8 +76,7 @@ content=“Dart Trainer”
     }
     .darts {
       display: grid;
-      grid-template-columns:
-        repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
     }
     .darts button {
@@ -122,10 +113,6 @@ content=“Dart Trainer”
       color: white;
       font-size: 16px;
     }
-    button.danger {
-      background: #3a2222;
-      color: white;
-    }
     button:disabled {
       opacity: 0.4;
     }
@@ -142,8 +129,7 @@ content=“Dart Trainer”
     }
     .stats {
       display: grid;
-      grid-template-columns:
-        repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
     }
     .stat {
@@ -166,8 +152,7 @@ content=“Dart Trainer”
     }
     .actions {
       display: grid;
-      grid-template-columns:
-        1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
     .actions button {
@@ -250,9 +235,7 @@ content=“Dart Trainer”
       align-items: center;
       gap: 12px;
       padding: 10px 0;
-      border-bottom:
-        1px solid
-        #29292f;
+      border-bottom: 1px solid #29292f;
     }
     .step:last-child {
       border-bottom: none;
@@ -301,12 +284,6 @@ content=“Dart Trainer”
       font-size: 13px;
       line-height: 1.45;
     }
-    .smallGrid {
-      display: grid;
-      grid-template-columns:
-        1fr 1fr;
-      gap: 10px;
-    }
   </style>
 </head>
 <body>
@@ -321,82 +298,45 @@ content=“Dart Trainer”
   <select id="segment"></select>
   <label>Trefferbereich</label>
   <select id="area">
-    <option value="">
-      Gesamtes Segment
-    </option>
-    <option value="S">
-      Single
-    </option>
-    <option value="D">
-      Double
-    </option>
-    <option value="T" selected>
-      Triple
-    </option>
+    <option value="">Gesamtes Segment</option>
+    <option value="S">Single</option>
+    <option value="D">Double</option>
+    <option value="T" selected>Triple</option>
   </select>
 </div>
 <div class="card">
   <label>Darts pro Runde</label>
   <div class="darts">
-    <button
-      onclick="chooseDarts(3,this)"
-      class="active"
-    >
-      3
-    </button>
-    <button
-      onclick="chooseDarts(6,this)"
-    >
-      6
-    </button>
-    <button
-      onclick="chooseDarts(9,this)"
-    >
-      9
-    </button>
+    <button onclick="chooseDarts(3,this)" class="active">3</button>
+    <button onclick="chooseDarts(6,this)">6</button>
+    <button onclick="chooseDarts(9,this)">9</button>
   </div>
 </div>
-<button
-  class="start"
-  onclick="startTraining()"
->
+<button class="start" onclick="startTraining()">
   Training starten
 </button>
   </div>
   <div id="training">
-<button
-  class="back"
-  onclick="back()"
->
+<button class="back" onclick="back()">
   ← Zurück
 </button>
 <div class="target">
   Ziel
-  <strong id="target">
-    T20
-  </strong>
-  <div id="roundText">
-    Runde 1
-  </div>
+  <strong id="target">T20</strong>
+  <div id="roundText">Runde 1</div>
 </div>
 <div class="stats">
   <div class="stat">
     <span>Würfe</span>
-    <strong id="throws">
-      0
-    </strong>
+    <strong id="throws">0</strong>
   </div>
   <div class="stat">
     <span>Treffer</span>
-    <strong id="hits">
-      0
-    </strong>
+    <strong id="hits">0</strong>
   </div>
   <div class="stat">
     <span>Quote</span>
-    <strong id="rate">
-      0 %
-    </strong>
+    <strong id="rate">0 %</strong>
   </div>
 </div>
 <div class="card round">
@@ -406,35 +346,19 @@ content=“Dart Trainer”
 </div>
 <div class="card">
   <label>Kamera</label>
-  <div
-    id="cameraWrap"
-    class="cameraWrap"
-  >
+  <div id="cameraWrap" class="cameraWrap">
     <video
       id="video"
       autoplay
       playsinline
       muted
     ></video>
-    <canvas
-      id="overlay"
-    ></canvas>
-    <canvas
-      id="differenceCanvas"
-    ></canvas>
-    <div
-      id="cameraPlaceholder"
-      class="cameraPlaceholder"
-    >
-      <div class="icon">
-        📷
-      </div>
-      <strong>
-        Kamera noch aus
-      </strong>
-      <div>
-        Richte dein iPhone auf das Dartboard.
-      </div>
+    <canvas id="overlay"></canvas>
+    <canvas id="differenceCanvas"></canvas>
+    <div id="cameraPlaceholder" class="cameraPlaceholder">
+      <div class="icon">📷</div>
+      <strong>Kamera noch aus</strong>
+      <div>Richte dein iPhone auf das Dartboard.</div>
     </div>
   </div>
   <div class="buttonStack">
@@ -446,17 +370,12 @@ content=“Dart Trainer”
       Kamera starten
     </button>
   </div>
-  <div
-    id="cameraStatus"
-    class="status"
-  >
+  <div id="cameraStatus" class="status">
     Noch keine Kamera aktiv
   </div>
 </div>
 <div class="card">
-  <label>
-    1. Dartboard kalibrieren
-  </label>
+  <label>1. Dartboard kalibrieren</label>
   <div
     id="calibrationMessage"
     class="calibrationMessage"
@@ -480,82 +399,50 @@ content=“Dart Trainer”
     </button>
   </div>
   <div style="margin-top:14px">
-    <div
-      id="step20"
-      class="step"
-    >
-      <div class="stepNumber">
-        1
-      </div>
+    <div id="step20" class="step">
+      <div class="stepNumber">1</div>
       <div class="stepText">
         20 oben
-        <small>
-          Mittelpunkt des Zahlenbereichs 20 antippen
-        </small>
+        <small>Mittelpunkt des Zahlenbereichs 20 antippen</small>
       </div>
     </div>
-    <div
-      id="step3"
-      class="step"
-    >
-      <div class="stepNumber">
-        2
-      </div>
+    <div id="step3" class="step">
+      <div class="stepNumber">2</div>
       <div class="stepText">
         3 rechts
-        <small>
-          Mittelpunkt des Zahlenbereichs 3 antippen
-        </small>
+        <small>Mittelpunkt des Zahlenbereichs 3 antippen</small>
       </div>
     </div>
-    <div
-      id="step6"
-      class="step"
-    >
-      <div class="stepNumber">
-        3
-      </div>
+    <div id="step6" class="step">
+      <div class="stepNumber">3</div>
       <div class="stepText">
         6 unten
-        <small>
-          Mittelpunkt des Zahlenbereichs 6 antippen
-        </small>
+        <small>Mittelpunkt des Zahlenbereichs 6 antippen</small>
       </div>
     </div>
-    <div
-      id="step11"
-      class="step"
-    >
-      <div class="stepNumber">
-        4
-      </div>
+    <div id="step11" class="step">
+      <div class="stepNumber">4</div>
       <div class="stepText">
         11 links
-        <small>
-          Mittelpunkt des Zahlenbereichs 11 antippen
-        </small>
+        <small>Mittelpunkt des Zahlenbereichs 11 antippen</small>
       </div>
     </div>
   </div>
   <p class="hint">
-    Wichtig: Das iPhone danach nicht mehr bewegen.
-    Für die ersten Tests sollte das gesamte Board gut sichtbar sein.
+    Wichtig: Das iPhone danach nicht mehr bewegen. Das gesamte Dartboard sollte im Kamerabild sichtbar sein.
   </p>
 </div>
 <div class="card">
-  <label>
-    2. Bildvergleich testen
-  </label>
+  <label>2. Bildvergleich testen</label>
   <p class="hint">
-    Nimm zuerst ein Referenzbild ohne neuen Dart auf.
-    Wirf danach einen Dart und nimm ein Vergleichsbild auf.
+    Nimm zuerst ein Referenzbild ohne neuen Dart auf. Wirf danach einen Dart und nimm ein Vergleichsbild auf.
   </p>
   <div class="buttonStack">
     <button
       id="referenceButton"
       class="mainButton"
-      onclick="alert"
-      
+      onclick="captureReference()"
+      disabled
     >
       Referenzbild aufnehmen
     </button>
@@ -563,7 +450,7 @@ content=“Dart Trainer”
       id="compareButton"
       class="secondary"
       onclick="captureComparison()"
-    
+      disabled
     >
       Vergleichsbild aufnehmen
     </button>
@@ -571,42 +458,25 @@ content=“Dart Trainer”
       id="toggleDifferenceButton"
       class="secondary"
       onclick="toggleDifferenceView()"
-      
+      disabled
     >
       Unterschied anzeigen
     </button>
   </div>
-  <div
-    id="differenceResult"
-    class="resultBox"
-  >
+  <div id="differenceResult" class="resultBox">
     Bildvergleich
-    <strong>
-      Noch nicht durchgeführt
-    </strong>
+    <strong>Noch nicht durchgeführt</strong>
   </div>
 </div>
 <div class="card">
-  <div
-    style="
-      text-align:center;
-      color:#aaa;
-      margin-bottom:12px
-    "
-  >
+  <div style="text-align:center;color:#aaa;margin-bottom:12px">
     Testmodus
   </div>
   <div class="actions">
-    <button
-      class="miss"
-      onclick="throwDart(false)"
-    >
+    <button class="miss" onclick="throwDart(false)">
       Daneben
     </button>
-    <button
-      class="hit"
-      onclick="throwDart(true)"
-    >
+    <button class="hit" onclick="throwDart(true)">
       Treffer
     </button>
   </div>
@@ -640,23 +510,21 @@ let comparisonImageData = null
 let showingDifference = false
 const segment =
   document.getElementById("segment")
-for(let i=1;i<=20;i++){
+for(let i = 1; i <= 20; i++){
   const option =
     document.createElement("option")
   option.value = i
   option.textContent = i
-  if(i===20)
+  if(i === 20){
     option.selected = true
+  }
   segment.appendChild(option)
 }
-function chooseDarts(number,button){
+function chooseDarts(number, button){
   dartsPerRound = number
   document
     .querySelectorAll(".darts button")
-    .forEach(
-      b =>
-        b.classList.remove("active")
-    )
+    .forEach(b => b.classList.remove("active"))
   button.classList.add("active")
 }
 function startTraining(){
@@ -665,118 +533,81 @@ function startTraining(){
   roundThrows = 0
   round = 1
   const area =
-    document
-      .getElementById("area")
-      .value
+    document.getElementById("area").value
   const seg =
-    document
-      .getElementById("segment")
-      .value
-  document
-    .getElementById("target")
-    .textContent =
-      area + seg
-  document
-    .getElementById("setup")
-    .style.display =
-      "none"
-  document
-    .getElementById("training")
-    .style.display =
-      "block"
+    document.getElementById("segment").value
+  document.getElementById("target").textContent =
+    area + seg
+  document.getElementById("setup").style.display =
+    "none"
+  document.getElementById("training").style.display =
+    "block"
   update()
 }
 function throwDart(hit){
   totalThrows++
   roundThrows++
-  if(hit)
+  if(hit){
     hits++
-  if(
-    roundThrows >=
-    dartsPerRound
-  ){
+  }
+  if(roundThrows >= dartsPerRound){
     round++
     roundThrows = 0
   }
   update()
 }
 function update(){
-  document
-    .getElementById("throws")
-    .textContent =
-      totalThrows
-  document
-    .getElementById("hits")
-    .textContent =
-      hits
+  document.getElementById("throws").textContent =
+    totalThrows
+  document.getElementById("hits").textContent =
+    hits
   let quote = 0
   if(totalThrows > 0){
     quote =
-      hits /
-      totalThrows *
-      100
+      hits / totalThrows * 100
   }
-  document
-    .getElementById("rate")
-    .textContent =
-      quote
-        .toFixed(1)
-        .replace(".",",")
-      + " %"
-  document
-    .getElementById("roundText")
-    .textContent =
-      "Runde " +
-      round
-  document
-    .getElementById("roundCounter")
-    .textContent =
-      roundThrows +
-      " / " +
-      dartsPerRound +
-      " Darts"
+  document.getElementById("rate").textContent =
+    quote
+      .toFixed(1)
+      .replace(".", ",")
+    + " %"
+  document.getElementById("roundText").textContent =
+    "Runde " + round
+  document.getElementById("roundCounter").textContent =
+    roundThrows +
+    " / " +
+    dartsPerRound +
+    " Darts"
 }
 async function toggleCamera(){
   const video =
     document.getElementById("video")
   const placeholder =
-    document
-      .getElementById(
-        "cameraPlaceholder"
-      )
+    document.getElementById("cameraPlaceholder")
   const button =
-    document
-      .getElementById(
-        "cameraButton"
-      )
+    document.getElementById("cameraButton")
   const status =
-    document
-      .getElementById(
-        "cameraStatus"
-      )
+    document.getElementById("cameraStatus")
   if(cameraStream){
     stopCamera()
     return
   }
   try{
     cameraStream =
-      await navigator
-        .mediaDevices
-        .getUserMedia({
-          video: {
-            facingMode: {
-              ideal:
-                "environment"
-            },
-            width: {
-              ideal: 1280
-            },
-            height: {
-              ideal: 960
-            }
+      await navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: {
+            ideal: "environment"
           },
-          audio: false
-        })
+          width: {
+            ideal: 1280
+          },
+          height: {
+            ideal: 960
+          }
+        },
+        audio: false
+      })
     video.srcObject =
       cameraStream
     video.style.display =
@@ -806,55 +637,30 @@ function stopCamera(){
   if(cameraStream){
     cameraStream
       .getTracks()
-      .forEach(
-        track =>
-          track.stop()
-      )
+      .forEach(track => track.stop())
     cameraStream = null
   }
+  const video =
+    document.getElementById("video")
+  video.srcObject = null
+  video.style.display = "none"
   document
-    .getElementById("video")
-    .srcObject =
-      null
+    .getElementById("cameraPlaceholder")
+    .style.display = "flex"
   document
-    .getElementById("video")
-    .style.display =
-      "none"
+    .getElementById("cameraButton")
+    .textContent = "Kamera starten"
   document
-    .getElementById(
-      "cameraPlaceholder"
-    )
-    .style.display =
-      "flex"
-  document
-    .getElementById(
-      "cameraButton"
-    )
-    .textContent =
-      "Kamera starten"
-  document
-    .getElementById(
-      "cameraStatus"
-    )
-    .textContent =
-      "Kamera gestoppt"
+    .getElementById("cameraStatus")
+    .textContent = "Kamera gestoppt"
 }
 function resizeCanvases(){
   const wrap =
-    document
-      .getElementById(
-        "cameraWrap"
-      )
+    document.getElementById("cameraWrap")
   const overlay =
-    document
-      .getElementById(
-        "overlay"
-      )
+    document.getElementById("overlay")
   const diff =
-    document
-      .getElementById(
-        "differenceCanvas"
-      )
+    document.getElementById("differenceCanvas")
   const rect =
     wrap.getBoundingClientRect()
   overlay.width =
@@ -886,45 +692,28 @@ function startCalibration(){
   referenceImageData = null
   comparisonImageData = null
   document
-    .getElementById(
-      "referenceButton"
-    )
-    .disabled =
-      true
+    .getElementById("referenceButton")
+    .disabled = true
   document
-    .getElementById(
-      "compareButton"
-    )
-    .disabled =
-      true
+    .getElementById("compareButton")
+    .disabled = true
   document
-    .getElementById(
-      "toggleDifferenceButton"
-    )
-    .disabled =
-      true
+    .getElementById("toggleDifferenceButton")
+    .disabled = true
   resetStepDisplay()
   updateCalibrationMessage()
   drawOverlay()
 }
 function updateCalibrationMessage(){
   const message =
-    document
-      .getElementById(
-        "calibrationMessage"
-      )
-  if(
-    calibrationIndex <
-    calibrationNames.length
-  ){
+    document.getElementById("calibrationMessage")
+  if(calibrationIndex < calibrationNames.length){
     message.textContent =
       "Bitte jetzt " +
-      calibrationNames[
-        calibrationIndex
-      ] +
+      calibrationNames[calibrationIndex] +
       " auf dem Kamerabild antippen."
   }
-  else {
+  else{
     message.textContent =
       "Kalibrierung gespeichert ✓"
   }
@@ -936,73 +725,49 @@ document
     handleCalibrationClick
   )
 function handleCalibrationClick(event){
-  if(!calibrationMode)
+  if(!calibrationMode){
     return
+  }
   const canvas =
-    document
-      .getElementById(
-        "overlay"
-      )
+    document.getElementById("overlay")
   const rect =
-    canvas
-      .getBoundingClientRect()
+    canvas.getBoundingClientRect()
   const x =
-    event.clientX -
-    rect.left
+    event.clientX - rect.left
   const y =
-    event.clientY -
-    rect.top
+    event.clientY - rect.top
   calibrationPoints.push({
     name:
-      calibrationNames[
-        calibrationIndex
-      ],
+      calibrationNames[calibrationIndex],
     x: x,
     y: y
   })
   markStepDone(
-    calibrationNames[
-      calibrationIndex
-    ]
+    calibrationNames[calibrationIndex]
   )
   calibrationIndex++
-  if(
-    calibrationIndex >=
-    calibrationNames.length
-  ){
-    calibrationMode =
-      false
+  if(calibrationIndex >= calibrationNames.length){
+    calibrationMode = false
     localStorage.setItem(
       "dartCalibration",
-      JSON.stringify(
-        calibrationPoints
-      )
+      JSON.stringify(calibrationPoints)
     )
     document
-      .getElementById(
-        "referenceButton"
-      )
-      .disabled =
-        false
+      .getElementById("referenceButton")
+      .disabled = false
   }
   updateCalibrationMessage()
   drawOverlay()
 }
 function markStepDone(name){
   const map = {
-    "20":
-      "step20",
-    "3":
-      "step3",
-    "6":
-      "step6",
-    "11":
-      "step11"
+    "20": "step20",
+    "3": "step3",
+    "6": "step6",
+    "11": "step11"
   }
   document
-    .getElementById(
-      map[name]
-    )
+    .getElementById(map[name])
     .classList
     .add("done")
 }
@@ -1013,120 +778,91 @@ function resetStepDisplay(){
     "step6",
     "step11"
   ]
-  .forEach(
-    id => {
-      document
-        .getElementById(id)
-        .classList
-        .remove("done")
-    }
-  )
+  .forEach(id => {
+    document
+      .getElementById(id)
+      .classList
+      .remove("done")
+  })
 }
 function resetCalibration(){
-  calibrationMode =
-    false
-  calibrationIndex =
-    0
-  calibrationPoints =
-    []
-  referenceImageData =
-    null
-  comparisonImageData =
-    null
-  showingDifference =
-    false
+  calibrationMode = false
+  calibrationIndex = 0
+  calibrationPoints = []
+  referenceImageData = null
+  comparisonImageData = null
+  showingDifference = false
   localStorage.removeItem(
     "dartCalibration"
   )
   resetStepDisplay()
   document
-    .getElementById(
-      "calibrationMessage"
-    )
+    .getElementById("calibrationMessage")
     .textContent =
       "Kalibrierung gelöscht."
   document
-    .getElementById(
-      "referenceButton"
-    )
-    .disabled =
-      true
+    .getElementById("referenceButton")
+    .disabled = true
   document
-    .getElementById(
-      "compareButton"
-    )
-    .disabled =
-      true
+    .getElementById("compareButton")
+    .disabled = true
   document
-    .getElementById(
-      "toggleDifferenceButton"
-    )
-    .disabled =
-      true
+    .getElementById("toggleDifferenceButton")
+    .disabled = true
   document
-    .getElementById(
-      "differenceCanvas"
-    )
-    .style.display =
-      "none"
+    .getElementById("differenceCanvas")
+    .style.display = "none"
+  document
+    .getElementById("differenceResult")
+    .innerHTML =
+      "Bildvergleich<strong>Noch nicht durchgeführt</strong>"
   drawOverlay()
 }
 function drawOverlay(){
   const canvas =
-    document
-      .getElementById(
-        "overlay"
-      )
+    document.getElementById("overlay")
   const ctx =
-    canvas
-      .getContext("2d")
+    canvas.getContext("2d")
   ctx.clearRect(
     0,
     0,
     canvas.width,
     canvas.height
   )
-  calibrationPoints
-    .forEach(
-      (point,index) => {
-        ctx.beginPath()
-        ctx.arc(
-          point.x,
-          point.y,
-          9,
-          0,
-          Math.PI * 2
-        )
-        ctx.fillStyle =
-          "rgba(255,255,255,0.95)"
-        ctx.fill()
-        ctx.beginPath()
-        ctx.arc(
-          point.x,
-          point.y,
-          15,
-          0,
-          Math.PI * 2
-        )
-        ctx.strokeStyle =
-          "rgba(255,255,255,0.7)"
-        ctx.lineWidth =
-          2
-        ctx.stroke()
-        ctx.fillStyle =
-          "white"
-        ctx.font =
-          "bold 14px sans-serif"
-        ctx.fillText(
-          point.name,
-          point.x + 18,
-          point.y - 8
-        )
-      }
+  calibrationPoints.forEach(point => {
+    ctx.beginPath()
+    ctx.arc(
+      point.x,
+      point.y,
+      9,
+      0,
+      Math.PI * 2
     )
-  if(
-    calibrationPoints.length === 4
-  ){
+    ctx.fillStyle =
+      "rgba(255,255,255,0.95)"
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(
+      point.x,
+      point.y,
+      15,
+      0,
+      Math.PI * 2
+    )
+    ctx.strokeStyle =
+      "rgba(255,255,255,0.7)"
+    ctx.lineWidth = 2
+    ctx.stroke()
+    ctx.fillStyle = "white"
+    ctx.font =
+      "bold 14px sans-serif"
+    ctx.fillText(
+      point.name,
+      point.x + 18,
+      point.y - 8
+    )
+  })
+  if(calibrationPoints.length === 4){
     const p20 =
       calibrationPoints[0]
     const p3 =
@@ -1155,8 +891,7 @@ function drawOverlay(){
     ctx.closePath()
     ctx.strokeStyle =
       "rgba(255,255,255,0.75)"
-    ctx.lineWidth =
-      2
+    ctx.lineWidth = 2
     ctx.stroke()
     const centerX =
       (
@@ -1183,8 +918,7 @@ function drawOverlay(){
     ctx.fillStyle =
       "rgba(255,255,255,0.9)"
     ctx.fill()
-    ctx.fillStyle =
-      "white"
+    ctx.fillStyle = "white"
     ctx.font =
       "bold 13px sans-serif"
     ctx.fillText(
@@ -1196,48 +930,36 @@ function drawOverlay(){
 }
 function captureCurrentFrame(){
   const video =
-    document
-      .getElementById(
-        "video"
-      )
+    document.getElementById("video")
   const canvas =
-    document
-      .getElementById(
-        "captureCanvas"
-      )
+    document.getElementById("captureCanvas")
   if(
     !video.videoWidth ||
     !video.videoHeight
   ){
     return null
   }
-  const maxWidth =
-    720
+  const maxWidth = 720
   const scale =
     Math.min(
       1,
-      maxWidth /
-      video.videoWidth
+      maxWidth / video.videoWidth
     )
   canvas.width =
     Math.round(
-      video.videoWidth *
-      scale
+      video.videoWidth * scale
     )
   canvas.height =
     Math.round(
-      video.videoHeight *
-      scale
+      video.videoHeight * scale
     )
   const ctx =
-    canvas
-      .getContext(
-        "2d",
-        {
-          willReadFrequently:
-            true
-        }
-      )
+    canvas.getContext(
+      "2d",
+      {
+        willReadFrequently: true
+      }
+    )
   ctx.drawImage(
     video,
     0,
@@ -1253,11 +975,28 @@ function captureCurrentFrame(){
   )
 }
 function captureReference(){
+  if(!cameraStream){
+    alert(
+      "Bitte zuerst die Kamera starten."
+    )
+    return
+  }
+  if(calibrationPoints.length !== 4){
+    alert(
+      "Bitte zuerst alle 4 Punkte kalibrieren: 20, 3, 6 und 11."
+    )
+    return
+  }
+  const video =
+    document.getElementById("video")
   if(
-    calibrationPoints.length !== 4
+    !video ||
+    video.readyState < 2 ||
+    !video.videoWidth ||
+    !video.videoHeight
   ){
     alert(
-      "Bitte zuerst das Dartboard vollständig kalibrieren."
+      "Das Kamerabild ist noch nicht bereit."
     )
     return
   }
@@ -1265,32 +1004,23 @@ function captureReference(){
     captureCurrentFrame()
   if(!referenceImageData){
     alert(
-      "Das Kamerabild ist noch nicht bereit."
+      "Das Referenzbild konnte nicht aufgenommen werden."
     )
     return
   }
-  comparisonImageData =
-    null
+  comparisonImageData = null
   document
-    .getElementById(
-      "compareButton"
-    )
-    .disabled =
-      false
+    .getElementById("compareButton")
+    .disabled = false
   document
-    .getElementById(
-      "toggleDifferenceButton"
-    )
-    .disabled =
-      true
+    .getElementById("toggleDifferenceButton")
+    .disabled = true
   document
-    .getElementById(
-      "differenceResult"
-    )
+    .getElementById("differenceResult")
     .innerHTML =
-      "Referenzbild gespeichert<strong>Jetzt Dart werfen</strong>"
+      "Referenzbild gespeichert ✓<strong>Jetzt Dart werfen</strong>"
   alert(
-    "Referenzbild gespeichert. Das iPhone jetzt nicht bewegen. Wirf einen Dart und tippe anschließend auf Vergleichsbild aufnehmen."
+    "Referenzbild erfolgreich gespeichert. Das iPhone jetzt nicht bewegen. Wirf einen Dart und tippe danach auf Vergleichsbild aufnehmen."
   )
 }
 function captureComparison(){
@@ -1310,11 +1040,8 @@ function captureComparison(){
   }
   analyzeDifference()
   document
-    .getElementById(
-      "toggleDifferenceButton"
-    )
-    .disabled =
-      false
+    .getElementById("toggleDifferenceButton")
+    .disabled = false
 }
 function analyzeDifference(){
   const reference =
@@ -1322,11 +1049,8 @@ function analyzeDifference(){
   const comparison =
     comparisonImageData
   if(
-    reference.width !==
-    comparison.width
-    ||
-    reference.height !==
-    comparison.height
+    reference.width !== comparison.width ||
+    reference.height !== comparison.height
   ){
     alert(
       "Die Bildgröße hat sich verändert. Bitte Referenzbild erneut aufnehmen."
@@ -1334,19 +1058,13 @@ function analyzeDifference(){
     return
   }
   const diffCanvas =
-    document
-      .getElementById(
-        "differenceCanvas"
-      )
+    document.getElementById("differenceCanvas")
   diffCanvas.width =
     reference.width
   diffCanvas.height =
     reference.height
   const ctx =
-    diffCanvas
-      .getContext(
-        "2d"
-      )
+    diffCanvas.getContext("2d")
   const output =
     ctx.createImageData(
       reference.width,
@@ -1358,29 +1076,24 @@ function analyzeDifference(){
     comparison.data
   const out =
     output.data
-  let changedPixels =
-    0
-  const threshold =
-    45
+  let changedPixels = 0
+  const threshold = 45
   for(
-    let i=0;
-    i<a.length;
-    i+=4
+    let i = 0;
+    i < a.length;
+    i += 4
   ){
     const rDiff =
       Math.abs(
-        a[i] -
-        b[i]
+        a[i] - b[i]
       )
     const gDiff =
       Math.abs(
-        a[i+1] -
-        b[i+1]
+        a[i + 1] - b[i + 1]
       )
     const bDiff =
       Math.abs(
-        a[i+2] -
-        b[i+2]
+        a[i + 2] - b[i + 2]
       )
     const diff =
       (
@@ -1388,29 +1101,18 @@ function analyzeDifference(){
         gDiff +
         bDiff
       ) / 3
-    if(
-      diff >
-      threshold
-    ){
-      out[i] =
-        255
-      out[i+1] =
-        255
-      out[i+2] =
-        255
-      out[i+3] =
-        220
+    if(diff > threshold){
+      out[i] = 255
+      out[i + 1] = 255
+      out[i + 2] = 255
+      out[i + 3] = 220
       changedPixels++
     }
-    else {
-      out[i] =
-        0
-      out[i+1] =
-        0
-      out[i+2] =
-        0
-      out[i+3] =
-        0
+    else{
+      out[i] = 0
+      out[i + 1] = 0
+      out[i + 2] = 0
+      out[i + 3] = 0
     }
   }
   ctx.putImageData(
@@ -1426,39 +1128,26 @@ function analyzeDifference(){
     totalPixels *
     100
   document
-    .getElementById(
-      "differenceResult"
-    )
+    .getElementById("differenceResult")
     .innerHTML =
-      "Veränderte Bildfläche<strong>"
-      +
+      "Veränderte Bildfläche<strong>" +
       percentage
         .toFixed(2)
-        .replace(".",",")
-      +
+        .replace(".", ",") +
       " %</strong>"
-  showingDifference =
-    true
+  showingDifference = true
   diffCanvas.style.display =
     "block"
   document
-    .getElementById(
-      "toggleDifferenceButton"
-    )
+    .getElementById("toggleDifferenceButton")
     .textContent =
       "Livebild anzeigen"
 }
 function toggleDifferenceView(){
   const canvas =
-    document
-      .getElementById(
-        "differenceCanvas"
-      )
+    document.getElementById("differenceCanvas")
   const button =
-    document
-      .getElementById(
-        "toggleDifferenceButton"
-      )
+    document.getElementById("toggleDifferenceButton")
   showingDifference =
     !showingDifference
   if(showingDifference){
@@ -1467,7 +1156,7 @@ function toggleDifferenceView(){
     button.textContent =
       "Livebild anzeigen"
   }
-  else {
+  else{
     canvas.style.display =
       "none"
     button.textContent =
@@ -1479,37 +1168,29 @@ function loadSavedCalibration(){
     localStorage.getItem(
       "dartCalibration"
     )
-  if(!saved)
+  if(!saved){
     return
-  try {
+  }
+  try{
     const parsed =
       JSON.parse(saved)
     if(
-      Array.isArray(parsed)
-      &&
+      Array.isArray(parsed) &&
       parsed.length === 4
     ){
       calibrationPoints =
         parsed
-      calibrationPoints
-        .forEach(
-          point =>
-            markStepDone(
-              point.name
-            )
-        )
+      calibrationPoints.forEach(
+        point =>
+          markStepDone(point.name)
+      )
       document
-        .getElementById(
-          "calibrationMessage"
-        )
+        .getElementById("calibrationMessage")
         .textContent =
           "Gespeicherte Kalibrierung geladen."
       document
-        .getElementById(
-          "referenceButton"
-        )
-        .disabled =
-          false
+        .getElementById("referenceButton")
+        .disabled = false
       drawOverlay()
     }
   }
